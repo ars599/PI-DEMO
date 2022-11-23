@@ -1,0 +1,173 @@
+"ACCESS-ESM_CMIP6"
+0001 01 01 0 0 0
+## output files
+#"ocean_daily",                24,  "hours",  1, "days", "time",
+"ocean_month",                 1,  "months", 1, "days", "time",
+"ocean_scalar",                1,  "months", 1, "days", "time"
+"ocean_bgc", 1,  "months", 1, "days", "time",
+"ocean_bgc_mth", 1,  "months", 1, "days", "time",
+"ocean_bgc_ann", 12,  "months", 1, "days", "time",
+"ocean"      ,                12,  "months", 1, "days", "time",
+#
+#===========================
+# OCEAN DIAGNOSTICS (MOM5)
+#===========================
+#
+#==========================================================================
+# WGOMD/CMIP5 Table 2.1 and related GFDL fields
+# all of these fields are time independent 
+#
+# Rosetta stone: ht=sea_floor_depth_below_geoid
+ "ocean_model","ht","ht"   ,"ocean_month","all",.false.,"none",2
+ "ocean_model","hu","hu"   ,"ocean_month","all",.false.,"none",2
+#
+# geographical longitude and latitude of corner and tracer points (ocean_month)
+ "ocean_model","geolat_c","geolat_c"  ,"ocean_month","all",.false.,"none",2
+ "ocean_model","geolon_c","geolon_c"  ,"ocean_month","all",.false.,"none",2
+ "ocean_model","geolat_t","geolat_t"  ,"ocean_month","all",.false.,"none",2
+ "ocean_model","geolon_t","geolon_t"  ,"ocean_month","all",.false.,"none",2
+#
+# geographical longitude and latitude of corner and tracer points (ocean_daily)
+# "ocean_model","geolat_c","geolat_c","ocean_daily","all",.false.,"none",2
+# "ocean_model","geolon_c","geolon_c","ocean_daily","all",.false.,"none",2
+# "ocean_model","geolat_t","geolat_t","ocean_daily","all",.false.,"none",2
+# "ocean_model","geolon_t","geolon_t","ocean_daily","all",.false.,"none",2
+#
+# horizontal area of tracer and velocity grid cells
+ "ocean_model","area_t","area_t" ,"ocean_month","all",.false.,"none",2
+ "ocean_model","area_u","area_u" ,"ocean_month","all",.false.,"none",2
+#
+# number of vertical grid cells in tracer and velocity cells
+ "ocean_model","kmt","kmt"  ,"ocean_month","all",.false.,"none",2
+ "ocean_model","kmu","kmu"  ,"ocean_month","all",.false.,"none",2
+#
+#
+#==========================================================================
+# WGOMD/CMIP5 Table 2.2
+# all of these fields are time dependent 
+#
+# Rosetta stone: total_mass_seawater=sea_water_mass 
+# "ocean_model","total_mass_seawater","total_mass_seawater" ,"ocean_scalar","all",.true.,"none",2
+#
+# Rosetta stone: pbot_t=sea_water_pressure_at_sea_floor 
+ "ocean_model","pbot_t","pbot_t" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: patm_t=sea_water_pressure_at_sea_water_surface 
+# "ocean_model","patm_t","patm_t" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: total_volume_seawater=sea_water_volume 
+# "ocean_model","total_volume_seawater","total_volume_seawater" ,"ocean_scalar","all",.true.,"none",2
+#
+# Rosetta stone: sea_level=sea_surface_height_above_geoid 
+# "ocean_model","sea_level","sea_level" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: sea_level_sq=squared_square_of_sea_surface_height_above_geoid 
+# "ocean_model","sea_level_sq","sea_level_sq" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: eta_global is required to get global_average_sea_level_change
+# since the CM2M simulations use a Boussinesq ocean model.  
+# global_average_sea_level_change = eta_global + global_average_steric_sea_level_change
+# "ocean_model","eta_global","eta_global" ,"ocean_scalar","all",.true.,"none",2
+#
+# Rosetta stone: eta_adjust=global_average_steric_sea_level_change
+# Also, can check that this eta_ajust is approximately equal to the same
+# diagnostic computed using time averaged rho and grid cell volume, as well
+# as the global averaged density.  pbot_adjust is useful to adjust the
+# bottom pressure for spurious mass sources in Boussinesq fluids. 
+# "ocean_model","eta_adjust","eta_adjust" ,"ocean_scalar","all",.true.,"none",2
+# "ocean_model","rhobarz_global","rhobarz_global"  ,"ocean_scalar","all",.true.,"none",2
+ "ocean_model","rho","rho" ,"ocean_month","all",.true.,"none",2
+ "ocean_model","pbot_adjust","pbot_adjust" ,"ocean_scalar","all",.true.,"none",2
+#
+# Rosetta stone: rho_dzt=sea_water_mass_per_unit_area
+ "ocean_model","rho_dzt","rho_dzt" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: dht=cell_thickness
+ "ocean_model","dzt","dht" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: temp=sea_water_potential_temperature
+ "ocean_model","pot_temp","pot_temp" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: temp_global_ave=sea_water_potential_temperature (global ave)
+#"ocean_model","temp_global_ave","temp_global_ave" ,"ocean_scalar","all",.true.,"none",2
+#
+## Rosetta stone: sst=sea_surface_temperature (monthly)
+# "ocean_model","surface_temp","sst"  ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: sst=sea_surface_temperature  (daily)
+# "ocean_model","surface_temp","sst"  ,"ocean_daily","all",.true.,"none",2
+#
+# Rosetta stone: sst_sq=square_of_sea_surface_temperature (monthly)
+# "ocean_model","squared_surface_temp","sst_sq"  ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: sst_sq=square_of_sea_surface_temperature (daily)
+# "ocean_model","squared_surface_temp","sst_sq"  ,"ocean_daily","all",.true.,"none",2
+#
+# Rosetta stone: salt=sea_water_salinity
+ "ocean_model","salt","salt" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: salt_global_ave=sea_water_salinity (global ave)
+# "ocean_model","salt_global_ave","salt_global_ave" ,"ocean_scalar","all",.true.,"none",2
+#
+# Rosetta stone: surface_salt=sea_surface_salinity
+#  "ocean_model","surface_salt","sss" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: pot_rho_0=sea_water_potential_density 
+#  "ocean_model","pot_rho_0","pot_rho_0" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: age_global=sea_water_age_since_surface_contact
+# "ocean_model","age_global","age_global" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: cfc_11=moles_per_unit_mass_of_cfc11_in_sea_water
+# "ocean_model","cfc_11","cfc_11" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: psiu=ocean_barotropic_mass_streamfunction
+# "ocean_model","psiu","psiu" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: mld=ocean_mixed_layer_thickness_defined_by_sigma_t
+# "ocean_model","mld","mld" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: mld_sq=square_of_ocean_mixed_layer_thickness_defined_by_sigma_t
+# "ocean_model","mld_sq","mld_sq" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: hblt=ocean_mixed_layer_thickness_defined_by_mixing_scheme (daily max)
+# "ocean_model","hblt","hblt_max" ,"ocean_daily","all",  max ,"none",2
+#
+# Rosetta stone: hblt=ocean_mixed_layer_thickness_defined_by_mixing_scheme (monthly max)
+# "ocean_model","hblt","hblt_max" ,"ocean_month","all",   max,"none",2
+#
+#==========================================================================
+# WGOMD/CMIP5 Table 2.3
+# all of these fields are time dependent 
+#
+# Rosetta stone: u=sea_water_x_velocity
+ "ocean_model","u","u"                       ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: v=sea_water_y_velocity
+ "ocean_model","v","v"                       ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: tz_trans=upward_ocean_mass_transport
+ "ocean_model","tz_trans","tz_trans" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: tz_trans_sq=square_of_upward_ocean_mass_transport
+ "ocean_model","tz_trans_sq","tz_trans_sq" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: tx_trans=ocean_x_mass_transport
+ "ocean_model","tx_trans","tx_trans" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: ty_trans=ocean_y_mass_transport
+ "ocean_model","ty_trans","ty_trans" ,"ocean_month","all",.true.,"none",2
+#
+# Rosetta stone: ocean_meridional_overturning_mass_streamfunction
+#                ocean_y_overturning_mass_streamfunction
+#                ocean_meridional_overturning_mass_streamfunction_due_to_bolus_advection
+#                ocean_y_overturning_mass_streamfunction_due_to_bolus_advection
+# are derived from the following fields 
+ "ocean_model","tx_trans_rho","tx_trans_rho"         ,"ocean_month","all",.true.,"none",2
+ "ocean_model","ty_trans_rho","ty_trans_rho"         ,"ocean_month","all",.true.,"none",2
+ "ocean_model","tx_trans_gm","tx_trans_gm"           ,"ocean_month","all",.true.,"none",2
+ "ocean_model","ty_trans_gm","ty_trans_gm"           ,"ocean_month","all",.true.,"none",2
+ "ocean_model","tx_trans_rho_gm","tx_trans_rho_gm"   ,"ocean_month","all",.true.,"none",2
+ "ocean_model","ty_trans_rho_gm","ty_trans_rho_gm"   ,"ocean_month","all",.true.,"none",2
+ "ocean_model","tx_trans_submeso","tx_trans_submeso" ,"ocean_month","all",.true.,"none",2
+ "ocean_model","ty_trans_submeso","ty_trans_submeso" ,"ocean_month","all",.true.,"none",2
