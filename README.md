@@ -14,12 +14,13 @@ Create a directory in which to keep the model configurations:
 
     mkdir -p ~/access-esm
     cd ~/access-esm
-    git clone https://github.com/coecms/esm-pre-industrial
+    #git clone https://github.com/coecms/esm-pre-industrial
+	git clone https://github.com/ars599/PI-DEMO
     cd esm-pre-industrial
 
 We strongly recommend to switch to a new branch for the running of the model:
 
-    git checkout -b runs
+    #git checkout -b runs
 
 Run the model:
 
